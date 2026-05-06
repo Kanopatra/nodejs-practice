@@ -1,0 +1,12 @@
+GET: /
+GET: /about/kanopatra
+GET: /about?myname=kanopatra
+GET: /about?myname=kanopatra
+GET: /about?myname=kanopatra
+GET: /about?myname=kanopatra
+GET: /about?myname=kanopatra
+GET: /about?myname=kanopatra
+GET: /
+GET: /
+GET: /
+GET: /

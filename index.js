@@ -1,17 +1,45 @@
-// =======first approch
-// const math=require('./math');
-// console.log( "Add value",math.add(3,5),math.subtract(10,4));
-// Second approch  =========
-// const {add,subtract}=require('./math');
-// console.log( "Add value",add(3,5),subtract(10,4));
-
-import  http from 'http';
+import http from 'http';
 import fs from 'fs';
-const server=http.createServer((req,res)=>{{
-   const logs= fs.appendFile('requests.log', `${req.method} ${req.url}\n`, (err) => {});
-console.log(`Received ${req.method} request for ${req.url}`);
-res.end("Welcome to Node.js server!")
+import url from 'url';
 
+const server = http.createServer((req, res) => {
 
-}})
-server.listen(3000);
+  const MyUrl = url.parse(req.url, true);
+
+  const logs = `${req.method}: ${req.url}\n`;
+
+  // write log
+  fs.appendFile('logs.txt', logs, (err) => {
+    if (err) {
+      console.log('Error writing log');
+    }
+  });
+console.log(MyUrl);
+  // routing
+  switch (MyUrl.pathname) {
+    case '/':
+      res.end('Welcome to the Home Page');
+      break;
+
+    case '/about':
+      const userName = MyUrl.query.myname || 'Guest';
+      res.end(`Welcome to the About Page, ${userName}!`);
+      break;
+      case '/signup':if(req.method === 'GET'){
+        res.end('Welcome to the Signup Page');
+      }
+else if(req.method === 'POST'){
+        res.end('Signup successful');
+      }
+    
+break;
+    default:
+      res.statusCode = 404;
+      res.end('Page Not Found');
+  }
+
+});
+
+server.listen(3000, () => {
+  console.log('Server running on port 3000');
+});
