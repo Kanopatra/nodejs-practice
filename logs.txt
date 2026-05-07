@@ -10,3 +10,7 @@ GET: /
 GET: /
 GET: /
 GET: /
+GET: /
+GET: /about?myname=kanopatra
+GET: /about
+GET: /about
