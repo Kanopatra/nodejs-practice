@@ -14,3 +14,7 @@ GET: /
 GET: /about?myname=kanopatra
 GET: /about
 GET: /about
+1778473943109:undefined: /api/users
+ 1778473998419:GET: /api/users
+ 1778474016300:DELETE: /api/users/96
+ 1778474031446:GET: /api/users/99

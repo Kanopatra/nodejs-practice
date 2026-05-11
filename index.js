@@ -71,6 +71,32 @@ const app=express();
 const PORT =3000;
 //Middleware
 app.use(express.urlencoded({extended:false}))
+// app.use((req,res,next) => {
+//     // it hold the process it wont allow next 
+//     console.log("middleware ")
+
+// }
+// )
+app.use((req,res,next) => {
+    // it cmplete the process and passwed to next middleware
+        console.log("middleware 1")
+    fs.appendFile('logs.txt',`\n ${Date.now()}:${req.method}: ${req.path}`,(err,data)=>{
+        next()
+
+    }
+
+    )
+
+}
+)
+
+app.use((req,res,next) => {
+    // it cmplete the process and end the res
+    console.log("middleware 2")
+next()
+
+}
+)
 app.get('/api/users',(req,res)=>{
   return  res.json(users)}
 )
