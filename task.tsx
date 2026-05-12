@@ -16,3 +16,11 @@ Dynamic path parameters
 GET /api/users/:id
 
 :id -->variable/Dynamic
+
+
+
+
+//Mongoose connectiviy
+
+first create schema ---structure define
+by usingg schema create Model 
